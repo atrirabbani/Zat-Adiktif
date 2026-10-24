@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPI IPA Kelas 9: Zat Adiktif & Psikotropika</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #172554 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+        .vibrant-card-1 {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(245, 158, 11, 0.15));
+            border: 1px solid rgba(248, 113, 113, 0.3);
+        }
+        .vibrant-card-2 {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(236, 72, 153, 0.15));
+            border: 1px solid rgba(192, 132, 252, 0.3);
+        }
+        .vibrant-card-3 {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.15));
+            border: 1px solid rgba(52, 211, 153, 0.3);
+        }
+        .vibrant-card-4 {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(99, 102, 241, 0.15));
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+        .glow-effect {
+            box-shadow: 0 0 35px rgba(236, 72, 153, 0.4);
+        }
+        .organ-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .organ-card:hover {
+            transform: translateY(-4px) scale(1.02);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #ec4899, #8b5cf6);
+            border-radius: 6px;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #f43f5e, #a855f7, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden custom-scrollbar">
+
+    <!-- HEADER / NAVBAR CERAH & BERWARNA -->
+    <header class="bg-slate-900/90 backdrop-blur-md border-b border-pink-500/30 sticky top-0 z-50 px-4 py-3 sm:px-8">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
+                <div class="bg-gradient-to-tr from-pink-500 to-amber-400 p-2.5 rounded-2xl text-white shadow-lg shadow-pink-500/30">
+                    <i class="fa-solid fa-flask-vial text-xl sm:text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-extrabold gradient-text leading-tight tracking-wide">LAB-EDU IPA</h1>
+                    <p class="text-xs text-pink-300 font-medium">Zat Adiktif & Psikotropika (Kelas 9 SMP)</p>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="sm:hidden text-pink-400 hover:text-white text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden sm:flex items-center gap-2 text-xs lg:text-sm font-semibold">
+                <button onclick="navigateTo('materi')" class="nav-btn px-3 py-2 rounded-xl bg-slate-800/80 hover:bg-pink-600 text-pink-200 hover:text-white transition shadow-sm border border-pink-500/20">
+                    <i class="fa-solid fa-book-open text-amber-400 mr-1.5"></i> Materi Klasifikasi
+                </button>
+                <button onclick="navigateTo('lab')" class="nav-btn px-3 py-2 rounded-xl bg-slate-800/80 hover:bg-emerald-600 text-emerald-200 hover:text-white transition shadow-sm border border-emerald-500/20">
+                    <i class="fa-solid fa-microscope text-emerald-400 mr-1.5"></i> Lab Bahaya
+                </button>
+                <button onclick="navigateTo('mitos')" class="nav-btn px-3 py-2 rounded-xl bg-slate-800/80 hover:bg-amber-600 text-amber-200 hover:text-white transition shadow-sm border border-amber-500/20">
+                    <i class="fa-solid fa-brain text-amber-400 mr-1.5"></i> Mitos vs Fakta
+                </button>
+                <button onclick="navigateTo('roleplay')" class="nav-btn px-3 py-2 rounded-xl bg-slate-800/80 hover:bg-purple-600 text-purple-200 hover:text-white transition shadow-sm border border-purple-500/20">
+                    <i class="fa-solid fa-shield-halved text-purple-400 mr-1.5"></i> Roleplay Menolak
+                </button>
+                <button onclick="navigateTo('kuis')" class="nav-btn px-4 py-2 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold transition shadow-lg shadow-pink-500/30">
+                    <i class="fa-solid fa-gamepad mr-1.5"></i> Kuis Evaluasi
+                </button>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden sm:hidden mt-3 pt-3 border-t border-slate-800 flex flex-col gap-2 text-sm font-medium">
+            <button onclick="navigateTo('materi')" class="text-left px-3 py-2 rounded-xl bg-slate-800 text-pink-300">
+                <i class="fa-solid fa-book-open text-amber-400 mr-2"></i> Materi Klasifikasi
+            </button>
+            <button onclick="navigateTo('lab')" class="text-left px-3 py-2 rounded-xl bg-slate-800 text-emerald-300">
+                <i class="fa-solid fa-microscope text-emerald-400 mr-2"></i> Lab Bahaya Organ
+            </button>
+            <button onclick="navigateTo('mitos')" class="text-left px-3 py-2 rounded-xl bg-slate-800 text-amber-300">
+                <i class="fa-solid fa-brain text-amber-400 mr-2"></i> Game Mitos vs Fakta
+            </button>
+            <button onclick="navigateTo('roleplay')" class="text-left px-3 py-2 rounded-xl bg-slate-800 text-purple-300">
+                <i class="fa-solid fa-shield-halved text-purple-400 mr-2"></i> Roleplay Menolak Ajakan
+            </button>
+            <button onclick="navigateTo('kuis')" class="text-left px-3 py-2 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
+                <i class="fa-solid fa-gamepad mr-2"></i> Kuis Evaluasi Interaktif
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 py-6 sm:px-8 flex-grow w-full">
+
+        <!-- SECTION 0: BERANDA / FLOWCHART ALUR LEARNING -->
+        <section id="section-home" class="page-section">
+            <div class="grid lg:grid-cols-12 gap-8 items-center min-h-[75vh]">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-500/20 border border-pink-400/40 text-pink-300 text-xs sm:text-sm font-semibold">
+                        <i class="fa-solid fa-atom text-amber-400"></i> MPI Interaktif Kurikulum Merdeka (Fase D)
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                        Media Pembelajaran Sains: <br>
+                        <span class="gradient-text">Zat Adiktif & Psikotropika</span>
+                    </h1>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Selamat datang di media pembelajaran digital interaktif IPA SMP Kelas 9! Jelajahi konsep sains adiksi, klasifikasi zat, bahaya kesehatan organ tubuh, aspek hukum (UU Narkotika & Psikotropika), hingga latihan bersikap asertif menghadapi tekanan teman sebaya secara seru dan penuh warna.
+                    </p>
+
+                    <!-- Flowchart Navigasi Ringkas -->
+                    <div class="p-4 rounded-2xl bg-slate-900/80 border border-purple-500/30">
+                        <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-3"><i class="fa-solid fa-diagram-project mr-1.5"></i> Flowchart Alur Pembelajaran Interaktif:</h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs font-semibold">
+                            <div class="p-2 rounded-xl bg-pink-950/80 border border-pink-500/40 text-pink-300">1. Definisi & Golongan</div>
+                            <div class="p-2 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-300">2. Lab Bahaya Organ</div>
+                            <div class="p-2 rounded-xl bg-amber-950/80 border border-amber-500/40 text-amber-300">3. Mitos vs Fakta</div>
+                            <div class="p-2 rounded-xl bg-purple-950/80 border border-purple-500/40 text-purple-300">4. Roleplay Asertif</div>
+                            <div class="p-2 rounded-xl bg-blue-950/80 border border-blue-500/40 text-blue-300 col-span-2 sm:col-span-1">5. Kuis Evaluasi</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button onclick="navigateTo('materi')" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 hover:scale-105 font-bold text-white transition transform shadow-lg shadow-pink-500/30 flex items-center gap-2">
+                            Eksplorasi Materi <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                        <button onclick="navigateTo('lab')" class="px-6 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 font-bold text-emerald-400 border border-emerald-500/40 transition flex items-center gap-2">
+                            <i class="fa-solid fa-vial"></i> Lab Bahaya Organ
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Graphic Card Grid Warna-Warni -->
+                <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+                    <div onclick="navigateTo('materi')" class="cursor-pointer vibrant-card-1 hover:scale-105 rounded-2xl p-5 transition transform">
+                        <div class="w-12 h-12 rounded-2xl bg-red-500/30 text-red-400 flex items-center justify-center text-2xl mb-3">
+                            <i class="fa-solid fa-capsules"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base mb-1">1. Klasifikasi Zat</h3>
+                        <p class="text-xs text-slate-300">Narkotika, Psikotropika & Psikoaktif Lain.</p>
+                    </div>
+
+                    <div onclick="navigateTo('lab')" class="cursor-pointer vibrant-card-3 hover:scale-105 rounded-2xl p-5 transition transform">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/30 text-emerald-400 flex items-center justify-center text-2xl mb-3">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base mb-1">2. Lab Organ</h3>
+                        <p class="text-xs text-slate-300">Simulasi efek zat pada organ vital tubuh.</p>
+                    </div>
+
+                    <div onclick="navigateTo('mitos')" class="cursor-pointer vibrant-card-2 hover:scale-105 rounded-2xl p-5 transition transform">
+                        <div class="w-12 h-12 rounded-2xl bg-purple-500/30 text-purple-300 flex items-center justify-center text-2xl mb-3">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base mb-1">3. Mitos / Fakta</h3>
+                        <p class="text-xs text-slate-300">Meluruskan salah kaprah seputar zat adiktif.</p>
+                    </div>
+
+                    <div onclick="navigateTo('roleplay')" class="cursor-pointer vibrant-card-4 hover:scale-105 rounded-2xl p-5 transition transform">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-500/30 text-blue-400 flex items-center justify-center text-2xl mb-3">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base mb-1">4. Roleplay Sosial</h3>
+                        <p class="text-xs text-slate-300">Simulasi ketangkasan menolak ajakan (peer pressure).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: MATERI LENGKAP CERAH -->
+        <section id="section-materi" class="page-section hidden">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-pink-400 uppercase tracking-widest bg-pink-500/10 px-3 py-1 rounded-full border border-pink-500/30">Menu 1</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">Kenalan dengan Zat Adiktif & Psikotropika</h2>
+                <p class="text-slate-300 text-sm mt-1">Klik tab di bawah ini untuk mempelajari definisi, klasifikasi, dan efek sains zat adiktif.</p>
+            </div>
+
+            <!-- Tabs Nav Warna-Warni -->
+            <div class="flex flex-wrap gap-2 border-b border-slate-700/80 pb-3 mb-6">
+                <button onclick="switchMateriTab('definisi')" id="tab-btn-definisi" class="materi-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md">
+                    1. Definisi & Adiksi
+                </button>
+                <button onclick="switchMateriTab('narkotika')" id="tab-btn-narkotika" class="materi-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 text-slate-300 hover:bg-slate-700">
+                    2. Narkotika (UU 35/2009)
+                </button>
+                <button onclick="switchMateriTab('psikotropika')" id="tab-btn-psikotropika" class="materi-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 text-slate-300 hover:bg-slate-700">
+                    3. Psikotropika (UU 5/1997)
+                </button>
+                <button onclick="switchMateriTab('psikoaktif')" id="tab-btn-psikoaktif" class="materi-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 text-slate-300 hover:bg-slate-700">
+                    4. Zat Psikoaktif Lainnya
+                </button>
+            </div>
+
+            <!-- TAB 1: DEFINISI -->
+            <div id="materi-tab-definisi" class="materi-content space-y-6">
+                <div class="vibrant-card-2 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
+                    <h3 class="text-xl font-bold text-pink-300 mb-3"><i class="fa-solid fa-circle-info mr-2 text-pink-400"></i>Apa itu Zat Adiktif & Ketergantungan?</h3>
+                    <p class="text-slate-200 text-sm sm:text-base leading-relaxed mb-4">
+                        <strong class="text-pink-300">Zat Adiktif</strong> adalah bahan aktif biologis yang apabila masuk ke dalam tubuh manusia dapat menyebabkan kerja sistem saraf terganggu, mengubah kesadaran/perilaku, serta menimbulkan ketagihan kuat (<strong class="text-amber-300">adiksi</strong>) yang sulit dihentikan secara mandiri.
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-4 mt-6">
+                        <div class="bg-slate-900/90 p-5 rounded-2xl border border-red-500/40">
+                            <div class="flex items-center gap-3 text-red-400 font-bold mb-2 text-base">
+                                <i class="fa-solid fa-hand-holding-medical text-xl"></i>
+                                Ketergantungan Fisik
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                Kondisi di mana organ tubuh terbiasa beroperasi dengan adannya zat adiktif. Jika asupan zat dihentikan secara tiba-tiba, timbul reaksi fisik hebat yang disebut <strong class="text-red-300">sakau / withdrawal syndrome</strong> (seperti pusing hebat, mual, kejang, hingga gatal di bawah kulit).
+                            </p>
+                        </div>
+                        <div class="bg-slate-900/90 p-5 rounded-2xl border border-amber-500/40">
+                            <div class="flex items-center gap-3 text-amber-400 font-bold mb-2 text-base">
+                                <i class="fa-solid fa-brain text-xl"></i>
+                                Ketergantungan Psikologis
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                Keadaan mental di mana seseorang merasa terdorong secara emosional (<strong class="text-amber-300">craving/hasrat kuat</strong>) untuk terus mengonsumsi zat guna meraih rasa senang semu, mengatasi kecemasan, atau melarikan diri dari tekanan hidup.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: NARKOTIKA -->
+            <div id="materi-tab-narkotika" class="materi-content hidden space-y-6">
+                <div class="vibrant-card-1 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
+                    <div class="flex items-center justify-between flex-wrap gap-2 mb-4">
+                        <h3 class="text-xl font-bold text-red-300"><i class="fa-solid fa-triangle-exclamation mr-2 text-red-400"></i>Narkotika (UU No. 35 Tahun 2009)</h3>
+                        <span class="text-xs bg-red-500/30 text-red-200 border border-red-400 px-3 py-1 rounded-full font-bold">Sangat Ketat & Berbahaya</span>
+                    </div>
+                    <p class="text-slate-200 text-sm sm:text-base leading-relaxed mb-6">
+                        Narkotika adalah zat atau obat yang berasal dari tanaman atau bukan tanaman (sintetis/semi-sintetis) yang menyebabkan penurunan/perubahan kesadaran, hilangnya rasa nyeri, dan ketergantungan fisik-psikologis tinggi.
+                    </p>
+
+                    <!-- Interactive Cards Golongan Narkotika -->
+                    <div class="space-y-4">
+                        <div class="bg-slate-900/90 border border-red-500/50 rounded-2xl p-5">
+                            <span class="text-xs font-bold text-red-400 uppercase tracking-wider">Potensi Adiksi Sangat Tinggi</span>
+                            <h4 class="text-base font-bold text-white mt-1">Golongan I</h4>
+                            <p class="text-xs sm:text-sm text-slate-300 mt-1">Hanya untuk tujuan ilmu pengetahuan (IPTEK), <strong class="text-red-300">TIDAK BOLEH</strong> digunakan dalam terapi kesehatan biasa!</p>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="bg-red-950 text-red-200 text-xs px-3 py-1 rounded-xl border border-red-700 font-semibold"><i class="fa-solid fa-leaf mr-1"></i> Ganja / Cannabis</span>
+                                <span class="bg-red-950 text-red-200 text-xs px-3 py-1 rounded-xl border border-red-700 font-semibold"><i class="fa-solid fa-syringe mr-1"></i> Heroin / Putaw</span>
+                                <span class="bg-red-950 text-red-200 text-xs px-3 py-1 rounded-xl border border-red-700 font-semibold"><i class="fa-solid fa-skull mr-1"></i> Kokain</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900/90 border border-amber-500/50 rounded-2xl p-5">
+                            <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Potensi Adiksi Tinggi</span>
+                            <h4 class="text-base font-bold text-white mt-1">Golongan II</h4>
+                            <p class="text-xs sm:text-sm text-slate-300 mt-1">Berkhasiat untuk pengobatan medis (pilihan terakhir dengan resep ketat dokter, cth: pereda nyeri pasien bedah/kanker).</p>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="bg-amber-950 text-amber-200 text-xs px-3 py-1 rounded-xl border border-amber-700 font-semibold">Morfin</span>
+                                <span class="bg-amber-950 text-amber-200 text-xs px-3 py-1 rounded-xl border border-amber-700 font-semibold">Petidin</span>
+                                <span class="bg-amber-950 text-amber-200 text-xs px-3 py-1 rounded-xl border border-amber-700 font-semibold">Metadon</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900/90 border border-blue-500/50 rounded-2xl p-5">
+                            <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Potensi Adiksi Ringan</span>
+                            <h4 class="text-base font-bold text-white mt-1">Golongan III</h4>
+                            <p class="text-xs sm:text-sm text-slate-300 mt-1">Berkhasiat luas untuk terapi medis dan pengembangan pelayanan kesehatan.</p>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="bg-blue-950 text-blue-200 text-xs px-3 py-1 rounded-xl border border-blue-700 font-semibold">Kodein (Obat Batuk Medis Resep)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: PSIKOTROPIKA -->
+            <div id="materi-tab-psikotropika" class="materi-content hidden space-y-6">
+                <div class="vibrant-card-2 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
+                    <div class="flex items-center justify-between flex-wrap gap-2 mb-4">
+                        <h3 class="text-xl font-bold text-purple-300"><i class="fa-solid fa-bolt mr-2 text-purple-400"></i>Psikotropika (UU No. 5 Tahun 1997)</h3>
+                        <span class="text-xs bg-purple-500/30 text-purple-200 border border-purple-400 px-3 py-1 rounded-full font-bold">Pengaruh Sistem Saraf Pusat</span>
+                    </div>
+                    <p class="text-slate-200 text-sm sm:text-base leading-relaxed mb-6">
+                        Psikotropika adalah obat/zat alamiah maupun sintetis (bukan narkotika) yang berkhasiat psikoaktif secara selektif pada **Sistem Saraf Pusat (SSP)**, memicu perubahan aktivitas mental, mood, dan perilaku.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-slate-900/90 border border-purple-500/40 p-4 rounded-2xl">
+                            <span class="text-xs font-bold text-red-400">Golongan I (Potensi Adiksi Sangat Kuat)</span>
+                            <p class="text-xs text-slate-300 mt-1">Hanya untuk IPTEK. Contoh: Ekstasi (MDMA), LSD, STP.</p>
+                        </div>
+                        <div class="bg-slate-900/90 border border-purple-500/40 p-4 rounded-2xl">
+                            <span class="text-xs font-bold text-amber-400">Golongan II (Potensi Adiksi Kuat)</span>
+                            <p class="text-xs text-slate-300 mt-1">Dapat digunakan medis terbatas. Contoh: Sabu (Metamfetamin), Amphetamine.</p>
+                        </div>
+                        <div class="bg-slate-900/90 border border-purple-500/40 p-4 rounded-2xl">
+                            <span class="text-xs font-bold text-yellow-400">Golongan III (Potensi Adiksi Sedang)</span>
+                            <p class="text-xs text-slate-300 mt-1">Digunakan untuk terapi medis. Contoh: Amobarbital, Pentobarbital.</p>
+                        </div>
+                        <div class="bg-slate-900/90 border border-purple-500/40 p-4 rounded-2xl">
+                            <span class="text-xs font-bold text-emerald-400">Golongan IV (Potensi Adiksi Ringan)</span>
+                            <p class="text-xs text-slate-300 mt-1">Luas untuk terapi medis penenang/insomnia. Contoh: Diazepam, Nitrazepam, Alprazolam.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: ZAT PSIKOAKTIF LAIN -->
+            <div id="materi-tab-psikoaktif" class="materi-content hidden space-y-6">
+                <div class="vibrant-card-3 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
+                    <h3 class="text-xl font-bold text-emerald-300 mb-3"><i class="fa-solid fa-mug-hot mr-2 text-emerald-400"></i>Zat Psikoaktif Lainnya</h3>
+                    <p class="text-slate-200 text-sm sm:text-base leading-relaxed mb-6">
+                        Zat-zat di luar Narkotika & Psikotropika yang mudah dijumpai sehari-hari tetapi tetap berdaya merusak SSP dan menimbulkan adiksi.
+                    </p>
+
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <div class="bg-slate-900/90 border border-emerald-500/40 p-5 rounded-2xl">
+                            <div class="text-amber-400 text-3xl mb-3"><i class="fa-solid fa-smoking"></i></div>
+                            <h4 class="font-bold text-white text-base">Nikotin</h4>
+                            <p class="text-xs text-slate-300 mt-2 leading-relaxed">Terdapat pada rokok & liquid vape. Menstimulasi pacu jantung, mempersempit pembuluh darah, dan sangat adiktif.</p>
+                        </div>
+
+                        <div class="bg-slate-900/90 border border-emerald-500/40 p-5 rounded-2xl">
+                            <div class="text-amber-600 text-3xl mb-3"><i class="fa-solid fa-coffee"></i></div>
+                            <h4 class="font-bold text-white text-base">Kafein</h4>
+                            <p class="text-xs text-slate-300 mt-2 leading-relaxed">Terdapat pada kopi & teh. Merangsang kewaspadaan, menghilangkan kantuk dalam batas wajar, namun berlebihan memicu gelisah.</p>
+                        </div>
+
+                        <div class="bg-slate-900/90 border border-emerald-500/40 p-5 rounded-2xl">
+                            <div class="text-blue-400 text-3xl mb-3"><i class="fa-solid fa-wine-bottle"></i></div>
+                            <h4 class="font-bold text-white text-base">Alkohol (Etanol)</h4>
+                            <p class="text-xs text-slate-300 mt-2 leading-relaxed">Merupakan zat depresan. Memperlambat refleks otak, merusak daya ingat, dan memicu pengerutan organ hati (sirosis).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: LABORATORIUM BAHAYA ORGAN INTERAKTIF -->
+        <section id="section-lab" class="page-section hidden">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/30">Menu 2</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">Laboratorium Bahaya Organ Tubuh</h2>
+                <p class="text-slate-300 text-sm mt-1">Pilih organ tubuh untuk mensimulasikan dampak klinis akibat konsumsi zat adiktif.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-6">
+                <!-- Organ Selector Buttons -->
+                <div class="space-y-3">
+                    <div onclick="selectOrgan('otak')" id="organ-btn-otak" class="organ-card cursor-pointer p-4 rounded-2xl border border-purple-500/40 bg-slate-900/90 hover:bg-slate-800 flex items-center gap-4 transition shadow-md">
+                        <div class="w-12 h-12 rounded-2xl bg-purple-500/30 text-purple-300 flex items-center justify-center text-2xl shrink-0">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-base">Otak & Sistem Saraf</h4>
+                            <p class="text-xs text-slate-300">Emosi, halusinasi & dopamin</p>
+                        </div>
+                    </div>
+
+                    <div onclick="selectOrgan('jantung')" id="organ-btn-jantung" class="organ-card cursor-pointer p-4 rounded-2xl border border-red-500/40 bg-slate-900/90 hover:bg-slate-800 flex items-center gap-4 transition shadow-md">
+                        <div class="w-12 h-12 rounded-2xl bg-red-500/30 text-red-300 flex items-center justify-center text-2xl shrink-0">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-base">Jantung & Pembuluh</h4>
+                            <p class="text-xs text-slate-300">Aritmia & hipertensi mendadak</p>
+                        </div>
+                    </div>
+
+                    <div onclick="selectOrgan('paru')" id="organ-btn-paru" class="organ-card cursor-pointer p-4 rounded-2xl border border-teal-500/40 bg-slate-900/90 hover:bg-slate-800 flex items-center gap-4 transition shadow-md">
+                        <div class="w-12 h-12 rounded-2xl bg-teal-500/30 text-teal-300 flex items-center justify-center text-2xl shrink-0">
+                            <i class="fa-solid fa-lungs"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-base">Paru-Paru</h4>
+                            <p class="text-xs text-slate-300">PPOK & depresi pernapasan</p>
+                        </div>
+                    </div>
+
+                    <div onclick="selectOrgan('hati')" id="organ-btn-hati" class="organ-card cursor-pointer p-4 rounded-2xl border border-amber-500/40 bg-slate-900/90 hover:bg-slate-800 flex items-center gap-4 transition shadow-md">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/30 text-amber-300 flex items-center justify-center text-2xl shrink-0">
+                            <i class="fa-solid fa-capsules"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-base">Hati & Ginjal</h4>
+                            <p class="text-xs text-slate-300">Sirosis & gagal penyaringan racun</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulation Output Panel -->
+                <div class="lg:col-span-2 vibrant-card-3 rounded-2xl p-6 sm:p-8 flex flex-col justify-between backdrop-blur-md">
+                    <div>
+                        <div class="flex items-center gap-3 border-b border-emerald-500/30 pb-4 mb-4">
+                            <div id="organ-display-icon" class="text-3xl text-purple-300">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                            <div>
+                                <h3 id="organ-display-title" class="text-xl font-bold text-white">Otak & Sistem Saraf Pusat</h3>
+                                <p class="text-xs text-emerald-300 font-semibold">Simulasi Dampak Klinis Digital</p>
+                            </div>
+                        </div>
+
+                        <div id="organ-display-content" class="space-y-4">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/40">
+                        <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block mb-1"><i class="fa-solid fa-microscope mr-1"></i> Catatan Medis Sains:</span>
+                        <p id="organ-display-note" class="text-xs text-slate-300 leading-relaxed">
+                            Zat adiktif merusak reseptor dopamin alami otak sehingga menurunkan kemampuan berpikir logis secara permanen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: MITOS VS FAKTA GAME -->
+        <section id="section-mitos" class="page-section hidden">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-widest bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/30">Menu 3</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">Game: Mitos vs Fakta</h2>
+                <p class="text-slate-300 text-sm mt-1">Uji kejelianmu! Tentukan apakah pernyataan berikut merupakan Mitos atau Fakta.</p>
+            </div>
+
+            <div class="max-w-2xl mx-auto vibrant-card-2 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
+                <div class="flex justify-between items-center mb-6">
+                    <span id="mitos-progress" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-900 text-amber-300 border border-amber-500/30">Soal 1 dari 4</span>
+                    <span id="mitos-score" class="text-xs font-bold text-emerald-300 bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-500/40">Skor: 0</span>
+                </div>
+
+                <div class="min-h-[140px] flex items-center justify-center text-center p-5 bg-slate-900/90 rounded-2xl border border-purple-500/40 mb-6">
+                    <p id="mitos-statement" class="text-base sm:text-lg font-bold text-white leading-relaxed">
+                        "Coba narkoba sekali saja tidak akan bikin ketagihan."
+                    </p>
+                </div>
+
+                <div id="mitos-actions" class="grid grid-cols-2 gap-4">
+                    <button onclick="checkMitos(false)" class="py-3.5 px-4 rounded-2xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 font-bold text-white transition shadow-lg flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-xmark text-lg"></i> MITOS
+                    </button>
+                    <button onclick="checkMitos(true)" class="py-3.5 px-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 font-bold text-white transition shadow-lg flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-check text-lg"></i> FAKTA
+                    </button>
+                </div>
+
+                <!-- Feedback Box -->
+                <div id="mitos-feedback" class="hidden mt-6 p-4 rounded-2xl text-xs sm:text-sm border leading-relaxed">
+                    <!-- Feedback content -->
+                </div>
+
+                <button id="mitos-next-btn" onclick="nextMitos()" class="hidden mt-4 w-full py-3 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 font-bold text-white transition shadow-lg">
+                    Lanjut ke Pernyataan Berikutnya <i class="fa-solid fa-arrow-right ml-1"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION 4: ROLEPLAY TANTANGAN MENOLAK AJAKAN -->
+        <section id="section-roleplay" class="page-section hidden">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-purple-400 uppercase tracking-widest bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/30">Menu 4</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">Tantangan Menolak Ajakan (Roleplay Sosial)</h2>
+                <p class="text-slate-300 text-sm mt-1">Latih ketangkasanmu berani berkata TIDAK (*assertive skill*) saat menghadapi tekanan teman sebaya (*peer pressure*).</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto vibrant-card-4 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
+                <div class="bg-slate-900/90 rounded-2xl p-5 border border-indigo-500/40 mb-6 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-pink-500/30 text-pink-300 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-users-viewfinder"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-pink-400 font-bold uppercase tracking-wider">Skenario Lingkungan Tongkrongan</span>
+                        <h4 id="rp-scenario-title" class="font-bold text-white text-base sm:text-lg mt-0.5">Nongkrong Setelah Pulang Sekolah</h4>
+                        <p id="rp-scenario-desc" class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+                            Teman dekatmu menyodorkan rokok/vape dan bilang: *"Yah cupu banget sih lo, coba dikit doang biar kelihatan keren dan diterima di geng kita!"*
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Choice Options -->
+                <div id="rp-options" class="space-y-3">
+                    <!-- Dynamic Options Injected via JS -->
+                </div>
+
+                <!-- Feedback Result -->
+                <div id="rp-result" class="hidden mt-6 p-5 rounded-2xl bg-slate-900 border border-slate-700 text-xs sm:text-sm leading-relaxed">
+                    <!-- Dynamic Result -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: KUIS EVALUASI 5 SOAL & PEMBAHASAN -->
+        <section id="section-kuis" class="page-section hidden">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-pink-400 uppercase tracking-widest bg-pink-500/10 px-3 py-1 rounded-full border border-pink-500/30">Evaluasi Pembelajaran</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">Kuis Evaluasi Interaktif</h2>
+                <p class="text-slate-300 text-sm mt-1">Jawab 5 butir soal pilihan ganda di bawah ini untuk menguji pemahaman materi sains dan hukummu.</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto vibrant-card-2 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
+                <!-- Quiz Active State -->
+                <div id="quiz-container">
+                    <div class="flex justify-between items-center mb-6 border-b border-purple-500/30 pb-4">
+                        <span id="quiz-question-number" class="text-xs font-bold text-amber-300 uppercase tracking-wider">Soal 1 dari 5</span>
+                        <span id="quiz-score-badge" class="text-xs font-bold px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 border border-pink-400/30">Skor Sementara: 0</span>
+                    </div>
+
+                    <h3 id="quiz-question-text" class="text-base sm:text-lg font-bold text-white mb-6 leading-relaxed">
+                        Pertanyaan kuis akan dimuat di sini...
+                    </h3>
+
+                    <div id="quiz-options-list" class="space-y-3">
+                        <!-- Options Injected JS -->
+                    </div>
+
+                    <!-- Pembahasan Soal -->
+                    <div id="quiz-explanation" class="hidden mt-6 p-5 rounded-2xl bg-slate-900/95 border border-purple-500/50 text-xs sm:text-sm">
+                        <span class="font-bold text-amber-400 block mb-1 text-sm"><i class="fa-solid fa-lightbulb mr-1.5"></i> Pembahasan Sains & Hukum:</span>
+                        <p id="quiz-explanation-text" class="text-slate-300 leading-relaxed"></p>
+                    </div>
+
+                    <button id="quiz-next-btn" onclick="nextQuizQuestion()" class="hidden mt-6 w-full py-3.5 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 font-bold text-white transition shadow-lg">
+                        Lanjut Soal Berikutnya <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+
+                <!-- Quiz Result State -->
+                <div id="quiz-result-container" class="hidden text-center py-6">
+                    <div class="w-20 h-20 mx-auto rounded-3xl bg-pink-500/30 text-pink-300 flex items-center justify-center text-4xl mb-4 glow-effect">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-white">Evaluasi Pembelajaran Selesai!</h3>
+                    <p class="text-slate-300 text-sm mt-1">Berikut adalah capaian hasil belajar kamu:</p>
+
+                    <div class="my-6 p-6 bg-slate-900/95 rounded-2xl border border-purple-500/40 max-w-xs mx-auto">
+                        <span class="text-xs text-slate-400 uppercase font-bold tracking-wider">Skor Akhir Kamu</span>
+                        <div id="final-score" class="text-5xl font-extrabold gradient-text mt-2">100</div>
+                        <span id="final-status" class="text-xs font-bold text-emerald-400 mt-2 block">Sangat Memuaskan!</span>
+                    </div>
+
+                    <div class="flex justify-center gap-4">
+                        <button onclick="restartQuiz()" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold text-xs sm:text-sm transition shadow-lg">
+                            <i class="fa-solid fa-rotate-right mr-1.5"></i> Ulangi Kuis
+                        </button>
+                        <button onclick="navigateTo('materi')" class="px-6 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm border border-slate-600 transition">
+                            Review Materi
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900/90 border-t border-slate-800 text-slate-400 text-xs py-4 px-4 text-center mt-12">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p>© 2026 Media Pembelajaran Interaktif (MPI) IPA Kelas 9 SMP.</p>
+            <p class="text-pink-300">Kurikulum Merdeka (Fase D) — Berdasarkan UU No. 35/2009 & UU No. 5/1997</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- NAVIGASI HALAMAN ---
+        function navigateTo(sectionId) {
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.add('hidden'));
+            
+            const target = document.getElementById(`section-${sectionId}`);
+            if (target) {
+                target.classList.remove('hidden');
+            }
+
+            document.getElementById('mobile-menu').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Toggle Mobile Menu
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // --- MATERI TAB NAVIGATION ---
+        function switchMateriTab(tabName) {
+            document.querySelectorAll('.materi-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('.materi-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-gradient-to-r', 'from-pink-500', 'to-rose-500', 'text-white', 'shadow-md');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+            });
+
+            document.getElementById(`materi-tab-${tabName}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-btn-${tabName}`);
+            activeBtn.classList.remove('bg-slate-800', 'text-slate-300');
+            activeBtn.classList.add('bg-gradient-to-r', 'from-pink-500', 'to-rose-500', 'text-white', 'shadow-md');
+        }
+
+        // --- DATA LAB BAHAYA ORGAN ---
+        const organData = {
+            otak: {
+                title: "Otak & Sistem Saraf Pusat (SSP)",
+                icon: "fa-solid fa-brain text-purple-300",
+                note: "Zat adiktif merusak reseptor dopamin alami otak sehingga menurunkan kemampuan berpikir logis secara permanen.",
+                content: `
+                    <div class="space-y-3">
+                        <div class="p-3.5 bg-slate-900/90 rounded-xl border border-purple-500/40">
+                            <h5 class="text-sm font-bold text-purple-300"><i class="fa-solid fa-bolt mr-1"></i> Stimulan (Sabu, Ekstasi, Kokain, Nikotin)</h5>
+                            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Memaksa otak memproduksi neurotransmiter ekstra cepat. Dampak: Insomnia berat, gelisah berlebihan, paranoia, hingga kerusakan struktur neuron.</p>
+                        </div>
+                        <div class="p-3.5 bg-slate-900/90 rounded-xl border border-blue-500/40">
+                            <h5 class="text-sm font-bold text-blue-300"><i class="fa-solid fa-moon mr-1"></i> Depresan (Alkohol, Heroin, Diazepam)</h5>
+                            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Memperlambat sinyal sistem saraf pusat. Dampak: Perilaku lambat, refleks tumpul, hilangnya ingatan singkat, hilangnya kesadaran (koma).</p>
+                        </div>
+                    </div>
+                `
+            },
+            jantung: {
+                title: "Jantung & Pembuluh Darah",
+                icon: "fa-solid fa-heart-pulse text-red-400",
+                note: "Penggunaan stimulan memaksa denyut jantung terpacu di luar batas wajar dan memicu kerusakan pembuluh darah.",
+                content: `
+                    <div class="space-y-3">
+                        <div class="p-3.5 bg-slate-900/90 rounded-xl border border-red-500/40">
+                            <h5 class="text-sm font-bold text-red-300">Aritmia & Hipertensi Akut</h5>
+                            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Detak jantung berdenyut tidak teratur (terlalu kencang), tekanan darah melonjak drastis yang memicu penyempitan pembuluh kapiler.</p>
+                        </div>
+                        <div class="p-3.5 bg-slate-900/90 rounded-xl border border-red-500/40">
+                            <h5 class="text-sm font-bold text-red-300">Serangan Jantung & Stroke Overdosis</h5>
+                            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Penyumbatan atau pecahnya pembuluh darah di otak akibat beban kerja jantung berlebih saat overdosis zat adiktif.</p>
+                        </div>
+                    </div>
+                `
+            },
+            paru: {
+                title: "Paru-Paru & Sistem Pernapasan",
+                icon: "fa-solid fa-lungs text-teal-300",
+                note: "Asap tembakau & uap vape mengandung Tar, Nikotin, dan Karbon Monoksida (CO) yang merusak alveolus.",
+                content: `
+                    <div class="space-y-3">
+                        <div class="p-3.5 bg-slate-900/90 rounded-xl border border-teal-500/40">
+                            <h5 class="text-sm font-bold text-teal-300">Penyakit Paru Obstruktif Kronis (PPOK)</h5>
+                            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Kerusakan silia pembersih saluran pernapasan yang memicu penumpukan dahak kental, bronkitis kronis, dan sesak napas.</p>
+                        </div>
+                        <div class="p-3.5 bg-slate-900/90 rounded-xl border border-teal-500/40">
+                            <h5 class="text-sm font-bold text-teal-300">Depresi Pernapasan (Opioid)</h5>
+                            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Dosis berlebih dari golongan Opioid (Heroin/Morfin) dapat melumpuhkan dorongan napas di otak, memicu gagal napas mendadak.</p>
+                        </div>
+                    </div>
+                `
+            },
+            hati: {
+                title: "Hati & Ginjal (Ekskresi)",
+                icon: "fa-solid fa-capsules text-amber-300",
+                note: "Hati dan ginjal harus bekerja keras menetralisir dan menyaring racun endapan zat kimia adiktif.",
+                content: `
+                    <div class="space-y-3">
+                        <div class="p-3.5 bg-slate-900/90 rounded-xl border border-amber-500/40">
+                            <h5 class="text-sm font-bold text-amber-300">Sirosis Hati (Akibat Alkohol)</h5>
+                            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Pengikisan sel hati sehat yang digantikan oleh jaringan parut permanen, memicu kegagalan organ hati mendetoksifikasi racun tubuh.</p>
+                        </div>
+                        <div class="p-3.5 bg-slate-900/90 rounded-xl border border-amber-500/40">
+                            <h5 class="text-sm font-bold text-amber-300">Gagal Ginjal Akut</h5>
+                            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Penyaringan glomerulus ginjal rusak akibat racun berlebih, memaksa penderita menjalani cuci darah berkala.</p>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        function selectOrgan(organKey) {
+            const data = organData[organKey];
+            if (!data) return;
+
+            document.getElementById('organ-display-title').innerText = data.title;
+            document.getElementById('organ-display-icon').className = `text-3xl ${data.icon}`;
+            document.getElementById('organ-display-content').innerHTML = data.content;
+            document.getElementById('organ-display-note').innerText = data.note;
+        }
+
+        // --- MITOS VS FAKTA GAME LOGIC ---
+        const mitosData = [
+            {
+                statement: '"Coba-coba narkoba sekali saja tidak akan membuat seseorang ketagihan."',
+                isFakta: false,
+                explanation: "MITOS! Banyak zat adiktif (seperti Sabu & Heroin) memiliki toleransi dan daya adiksi sangat tinggi bahkan hanya dalam beberapa kali konsumsi."
+            },
+            {
+                statement: '"Kopi mengandung kafein yang tergolong zat psikoaktif ringan yang merangsang kewaspadaan."',
+                isFakta: true,
+                explanation: "FAKTA! Kafein dalam kopi/teh menstimulasi sistem saraf pusat untuk menunda kantuk dan meningkatkan fokus."
+            },
+            {
+                statement: '"Vape / Rokok Elektrik sepenuhnya bebas dari zat adiktif dan aman bagi remaja."',
+                isFakta: false,
+                explanation: "MITOS! Liquid vape tetap mengandung Nikotin yang memicu ketagihan kuat serta zat iritan racun kimia berbahaya."
+            },
+            {
+                statement: '"Obat-obatan psikotropika Golongan IV boleh dibeli bebas tanpa resep dokter di apotek."',
+                isFakta: false,
+                explanation: "MITOS! Semua psikotropika diawasi ketat oleh UU No. 5 Tahun 1997 dan wajib menggunakan resep dokter resmi!"
+            }
+        ];
+
+        let currentMitosIndex = 0;
+        let mitosScore = 0;
+
+        function loadMitosQuestion() {
+            const q = mitosData[currentMitosIndex];
+            document.getElementById('mitos-progress').innerText = `Soal ${currentMitosIndex + 1} dari ${mitosData.length}`;
+            document.getElementById('mitos-statement').innerText = q.statement;
+            document.getElementById('mitos-feedback').classList.add('hidden');
+            document.getElementById('mitos-actions').classList.remove('hidden');
+            document.getElementById('mitos-next-btn').classList.add('hidden');
+        }
+
+        function checkMitos(userAnswer) {
+            const q = mitosData[currentMitosIndex];
+            const feedbackBox = document.getElementById('mitos-feedback');
+            
+            if (userAnswer === q.isFakta) {
+                mitosScore += 25;
+                feedbackBox.className = "mt-6 p-4 rounded-2xl text-xs sm:text-sm border bg-emerald-950/90 border-emerald-500/50 text-emerald-200 leading-relaxed";
+                feedbackBox.innerHTML = `<i class="fa-solid fa-circle-check mr-2 text-emerald-400 text-base"></i><strong>JAWABAN BENAR!</strong> ${q.explanation}`;
+            } else {
+                feedbackBox.className = "mt-6 p-4 rounded-2xl text-xs sm:text-sm border bg-red-950/90 border-red-500/50 text-red-200 leading-relaxed";
+                feedbackBox.innerHTML = `<i class="fa-solid fa-circle-xmark mr-2 text-red-400 text-base"></i><strong>JAWABAN SALAH!</strong> ${q.explanation}`;
+            }
+
+            document.getElementById('mitos-score').innerText = `Skor: ${mitosScore}`;
+            feedbackBox.classList.remove('hidden');
+            document.getElementById('mitos-actions').classList.add('hidden');
+            document.getElementById('mitos-next-btn').classList.remove('hidden');
+        }
+
+        function nextMitos() {
+            currentMitosIndex++;
+            if (currentMitosIndex < mitosData.length) {
+                loadMitosQuestion();
+            } else {
+                document.getElementById('mitos-statement').innerText = `Permainan Selesai! Skor Akhir Kamu: ${mitosScore}/100`;
+                document.getElementById('mitos-actions').classList.add('hidden');
+                document.getElementById('mitos-next-btn').classList.add('hidden');
+                document.getElementById('mitos-feedback').classList.add('hidden');
+            }
+        }
+
+        // --- ROLEPLAY TANTANGAN MENOLAK AJAKAN ---
+        const roleplayOptions = [
+            {
+                text: "Mencoba sedikit saja agar tidak diejek atau dijauhi geng teman.",
+                isBest: false,
+                feedback: "Sangat Berisiko! Coba-coba adalah pintu masuk utama jeratan adiksi. Jangan korbankan kesehatanmu hanya demi rasa gengsi!"
+            },
+            {
+                text: "Menolak dengan tegas & ramah (Asertif): 'Sori bro, gue nggak mau merusak paru-paru gue. Kita mending main game online aja!', lalu mengalihkan topik.",
+                isBest: true,
+                feedback: "Pilihan Sangat Tepat (Asertif)! Menolak secara jelas, percaya diri, tanpa emosi, dan menawarkan alternatif kegiatan positif."
+            },
+            {
+                text: "Marah-marah dan memusuhi teman yang mengajak.",
+                isBest: false,
+                feedback: "Kurang Efektif. Reaksi emosional dapat memicu bentrok fisik. Gunakan sikap asertif: tenang namun berpendirian teguh."
+            }
+        ];
+
+        function initRoleplay() {
+            const container = document.getElementById('rp-options');
+            container.innerHTML = '';
+
+            roleplayOptions.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-xs sm:text-sm text-slate-200 transition flex items-start gap-3 shadow-md";
+                btn.innerHTML = `<span class="bg-gradient-to-tr from-pink-500 to-purple-600 text-white w-6 h-6 rounded-full flex items-center justify-center shrink-0 font-bold text-xs">${idx + 1}</span> <span>${opt.text}</span>`;
+                btn.onclick = () => selectRoleplayOption(opt);
+                container.appendChild(btn);
+            });
+        }
+
+        function selectRoleplayOption(option) {
+            const resBox = document.getElementById('rp-result');
+            resBox.classList.remove('hidden');
+            
+            if (option.isBest) {
+                resBox.className = "mt-6 p-5 rounded-2xl bg-emerald-950/90 border border-emerald-500/50 text-emerald-200 text-xs sm:text-sm leading-relaxed";
+                resBox.innerHTML = `<h5 class="font-bold text-base text-emerald-400 mb-1"><i class="fa-solid fa-shield-halved mr-2"></i>Respon Sangat Tepat (Asertif)!</h5>${option.feedback}`;
+            } else {
+                resBox.className = "mt-6 p-5 rounded-2xl bg-amber-950/90 border border-amber-500/50 text-amber-200 text-xs sm:text-sm leading-relaxed";
+                resBox.innerHTML = `<h5 class="font-bold text-base text-amber-400 mb-1"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Evaluasi Respon Sosial</h5>${option.feedback}`;
+            }
+        }
+
+        // --- KUIS EVALUASI INTERAKTIF (5 SOAL & PEMBAHASAN) ---
+        const quizData = [
+            {
+                question: "Zat adiktif yang dapat menyebabkan penurunan atau perubahan kesadaran, menghilangkan rasa nyeri, serta menimbulkan ketergantungan yang diatur ketat dalam UU No. 35 Tahun 2009 adalah...",
+                options: ["Psikotropika", "Narkotika", "Zat Psikoaktif Lain", "Sedatif-Hipnotik"],
+                correct: 1,
+                explanation: "Narkotika didefinisikan secara khusus dalam UU No. 35 Tahun 2009 sebagai zat dari tanaman/sintetis yang berdaya menurunkan kesadaran dan meredakan rasa nyeri hebat."
+            },
+            {
+                question: "Zat psikotropika yang berkhasiat menstimulasi sistem saraf pusat untuk meningkatkan gairah kerja dan kewaspadaan tinggi (seperti Sabu/Metamfetamin) masuk dalam kategori pengaruh...",
+                options: ["Depresan", "Halusinogen", "Stimulan", "Analgesik"],
+                correct: 2,
+                explanation: "Stimulan mempercepat kinerja Sistem Saraf Pusat (SSP), memacu denyut jantung, serta memicu energi buatan secara instan."
+            },
+            {
+                question: "Narkotika Golongan I seperti Heroin dan Ganja menurut undang-undang peruntukannya adalah...",
+                options: ["Pengobatan medis umum di apotek", "Terapi kesehatan berkala", "Hanya untuk tujuan IPTEK & dilarang untuk terapi biasa", "Dijual bebas dengan izin toko obat"],
+                correct: 2,
+                explanation: "Narkotika Golongan I memiliki potensi adiksi sangat tinggi sehingga dilarang digunakan untuk pengobatan medis umum dan hanya untuk ilmu pengetahuan."
+            },
+            {
+                question: "Seseorang yang mendadak menghentikan pemakaian zat adiktif setelah sekian lama ketergantungan akan mengalami gejala rasa sakit fisik hebat yang disebut...",
+                options: ["Halusinasi visual", "Sakau (Withdrawal Syndrome)", "Sirosis organ", "Toleransi zat"],
+                correct: 1,
+                explanation: "Sakau (Withdrawal Syndrome) adalah reaksi fisik tubuh yang terbiasa teradiksi saat asupan zat dihentikan secara mendadak."
+            },
+            {
+                question: "Tindakan pencegahan paling efektif bagi remaja untuk menghindari jeratan narkoba di lingkungan sosial sekolah adalah...",
+                options: ["Mencoba sedikit agar dipuji geng", "Membangun kontrol diri asertif & berani menolak ajakan negatif", "Menyimpan masalah pribadi sendiri", "Membeli obat penenang secara bebas"],
+                correct: 1,
+                explanation: "Sikap asertif (berani berkata TIDAK) serta berada di lingkungan teman sehati yang positif adalah benteng pencegahan utama remaja."
+            }
+        ];
+
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+        let answered = false;
+
+        function loadQuizQuestion() {
+            answered = false;
+            const q = quizData[currentQuizIndex];
+            document.getElementById('quiz-question-number').innerText = `Soal ${currentQuizIndex + 1} dari ${quizData.length}`;
+            document.getElementById('quiz-question-text').innerText = q.question;
+            document.getElementById('quiz-explanation').classList.add('hidden');
+            document.getElementById('quiz-next-btn').classList.add('hidden');
+
+            const optionsContainer = document.getElementById('quiz-options-list');
+            optionsContainer.innerHTML = '';
+
+            q.options.forEach((optText, idx) => {
+                const optBtn = document.createElement('button');
+                optBtn.className = "w-full text-left p-4 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-xs sm:text-sm text-slate-200 font-medium transition flex items-center justify-between shadow-sm";
+                optBtn.innerHTML = `<span><strong class="text-pink-400 mr-2">${String.fromCharCode(65 + idx)}.</strong> ${optText}</span> <i class="fa-regular fa-circle text-slate-500"></i>`;
+                optBtn.onclick = () => selectQuizAnswer(idx, optBtn);
+                optionsContainer.appendChild(optBtn);
+            });
+        }
+
+        function selectQuizAnswer(selectedIndex, selectedBtn) {
+            if (answered) return;
+            answered = true;
+
+            const q = quizData[currentQuizIndex];
+            const allBtns = document.getElementById('quiz-options-list').children;
+
+            if (selectedIndex === q.correct) {
+                quizScore += 20;
+                selectedBtn.className = "w-full text-left p-4 rounded-2xl bg-emerald-950/90 border border-emerald-500 text-xs sm:text-sm text-emerald-200 font-medium transition flex items-center justify-between shadow-md";
+                selectedBtn.querySelector('i').className = "fa-solid fa-circle-check text-emerald-400 text-base";
+            } else {
+                selectedBtn.className = "w-full text-left p-4 rounded-2xl bg-red-950/90 border border-red-500 text-xs sm:text-sm text-red-200 font-medium transition flex items-center justify-between shadow-md";
+                selectedBtn.querySelector('i').className = "fa-solid fa-circle-xmark text-red-400 text-base";
+
+                // Highlight correct answer
+                allBtns[q.correct].className = "w-full text-left p-4 rounded-2xl bg-emerald-950/90 border border-emerald-500 text-xs sm:text-sm text-emerald-200 font-medium transition flex items-center justify-between shadow-md";
+                allBtns[q.correct].querySelector('i').className = "fa-solid fa-circle-check text-emerald-400 text-base";
+            }
+
+            document.getElementById('quiz-score-badge').innerText = `Skor Sementara: ${quizScore}`;
+            document.getElementById('quiz-explanation-text').innerText = q.explanation;
+            document.getElementById('quiz-explanation').classList.remove('hidden');
+            document.getElementById('quiz-next-btn').classList.remove('hidden');
+        }
+
+        function nextQuizQuestion() {
+            currentQuizIndex++;
+            if (currentQuizIndex < quizData.length) {
+                loadQuizQuestion();
+            } else {
+                showQuizResults();
+            }
+        }
+
+        function showQuizResults() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            const resContainer = document.getElementById('quiz-result-container');
+            resContainer.classList.remove('hidden');
+
+            document.getElementById('final-score').innerText = quizScore;
+            const statusText = document.getElementById('final-status');
+
+            if (quizScore >= 80) {
+                statusText.innerText = "Sangat Memuaskan! Kamu Memahami Sains & Hukum Zat Adiktif!";
+                statusText.className = "text-xs font-bold text-emerald-400 mt-2 block";
+            } else if (quizScore >= 60) {
+                statusText.innerText = "Cukup Baik! Pelajari Kembali Rincian Golongan Zat.";
+                statusText.className = "text-xs font-bold text-amber-400 mt-2 block";
+            } else {
+                statusText.innerText = "Perlu Belajar Ulang. Silakan Review Kembali Menu Materi.";
+                statusText.className = "text-xs font-bold text-red-400 mt-2 block";
+            }
+        }
+
+        function restartQuiz() {
+            currentQuizIndex = 0;
+            quizScore = 0;
+            document.getElementById('quiz-score-badge').innerText = "Skor Sementara: 0";
+            document.getElementById('quiz-result-container').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+            loadQuizQuestion();
+        }
+
+        // INITIALIZATION ON LOAD
+        window.onload = function() {
+            selectOrgan('otak');
+            loadMitosQuestion();
+            initRoleplay();
+            loadQuizQuestion();
+        };
+    </script>
+</body>
+</html>
